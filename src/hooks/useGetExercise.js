@@ -1,21 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { fetchExercises } from '../services/exercise';
 
 const useGetExercise = (query) => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ isError: false, message: "d" });
-  const [data, setData] = useState();
+  const [exercises, setExercises] = useState([]);
 
   useEffect(() => {
-    getExercise(query);
+    if (query) {
+      getExercise(query);
+    }
   }, [query]);
 
   async function getExercise(query) {
     try {
       setLoading(true);
       const data = await fetchExercises(query);
-      setData(data);
+      setExercises(data);
       setLoading(false);
     } catch (err) {
       setError({ isError: true, message: err.message });
@@ -24,7 +26,7 @@ const useGetExercise = (query) => {
     }
   }
 
-  return { loading, error, data }
+  return { loading, error, exercises }
 }
 
 export default useGetExercise;

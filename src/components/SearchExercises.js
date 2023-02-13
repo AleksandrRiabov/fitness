@@ -1,7 +1,27 @@
 import React, { useState, useEffect } from 'react';
+
+import useGetExercise from '../hooks/useGetExercise';
 import { Box, Button, Stack, TextField, Typography } from '@mui/material';
 
+import Exercises from './Exercises';
+
 const SearchExercises = () => {
+  const [search, setSearch] = useState('');
+  const [query, setQuery] = useState('');
+
+  const { error, loading, exercises } = useGetExercise(query);
+
+  const handleSearch = () => {
+    if (search.trim()) {
+      setQuery(search);
+      setSearch('');
+    } else {
+      alert('Can not be empty');
+    }
+  }
+
+  console.log('render')
+
   return (
     <Stack
       alignItems='center'
@@ -32,26 +52,32 @@ const SearchExercises = () => {
             borderRadius: '40px'
           }}
           height='76px'
-          value=''
-          onChange={(e) => { }}
+          value={search}
+          onChange={(e) => { setSearch(e.target.value.toLowerCase()) }}
           placeholder='Search Exercises'
           type='text'
         />
         <Button
-         className='search-btn'
-         sx={{
-          bgcolor: '#ff2625',
-          color: '#fff',
-          textTransform: 'none',
-          width: {lg: '175px', xs: '80px'},
-          fontSize: {lg: '20px', xs: '14px'},
-          height: '56px',
-          position: 'absolute',
-          right: 0
-         }}
-         >
+          onClick={handleSearch}
+          className='search-btn'
+          sx={{
+            bgcolor: '#ff2625',
+            color: '#fff',
+            textTransform: 'none',
+            width: { lg: '175px', xs: '80px' },
+            fontSize: { lg: '20px', xs: '14px' },
+            height: '56px',
+            position: 'absolute',
+            right: 0
+          }}
+        >
           Search
         </Button>
+        {
+          loading ? <Box> Loading...</Box> :
+            error.isError ? <Box> {error.message}</Box> :
+              <Exercises exercises={exercises} />
+        }
 
       </Box>
     </Stack>
