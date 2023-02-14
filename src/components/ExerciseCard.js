@@ -9,7 +9,7 @@ export default function ExerciseCard({exercise}) {
 const {name, difficulty, equipment, instructions, muscle, type} = exercise;
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, width: '20%' }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {name}

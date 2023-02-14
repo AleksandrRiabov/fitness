@@ -12,7 +12,15 @@ const Exercises = ({ exercises }) => {
   const exercisesBlock = exercises.map(exercise => <ExerciseCard key={exercise.name} exercise={exercise} />);
 
   return (
-    <Box>{exercisesBlock}</Box>
+    <Box
+    sx={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      flexWrap: 'wrap'
+    }}
+    >{exercisesBlock}
+    </Box>
   )
 }
 
