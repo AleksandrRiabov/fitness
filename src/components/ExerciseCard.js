@@ -11,17 +11,34 @@ export default function ExerciseCard({ exercise }) {
   return (
     <Card sx={{
       maxWidth: 345, width: '22%',
-      margin: "1rem"
+      margin: "1rem",
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      background: '#fafafa'
     }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
+        <Typography variant="body2" mb='5px'>
+          <strong> Dificulty </strong>: {difficulty}
+        </Typography>
+        <Typography variant="body2" mb='5px'>
+          <strong> Muscle </strong>: {muscle}
+        </Typography>
+        <Typography variant="body2" mb='5px'>
+          <strong> Equipment </strong>: {equipment}
+        </Typography>
+        <Typography variant="body2" mb='5px'>
+          <strong> Type </strong>: {type}
+        </Typography>
         <Typography variant="body2" color="text.secondary">
-          {instructions.substring(0, 200)}
+          <strong> Description: </strong>
+          {instructions.substring(0, 100) + '..'}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ alignSelf: 'auto' }}>
         <Button size="small">Learn More</Button>
       </CardActions>
     </Card>
