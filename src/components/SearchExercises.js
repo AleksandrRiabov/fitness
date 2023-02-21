@@ -39,46 +39,53 @@ const SearchExercises = () => {
       >
         Awesome Exercises You <br /> Should Know
       </Typography>
-      <Box position='relative' mb='72px'>
-        <TextField
+      <Box >
+        <Box
+          position='relative'
           sx={{
-            input: {
-              fontWeight: 700,
-              border: 'none',
-              borderRadius: '4px'
-            },
             width: { lg: '800px', xs: '350px' },
-            background: '#fff',
-            borderRadius: '40px'
           }}
-          height='76px'
-          value={search}
-          onChange={(e) => { setSearch(e.target.value.toLowerCase()) }}
-          placeholder='Search Exercises'
-          type='text'
-        />
-        <Button
-          onClick={handleSearch}
-          className='search-btn'
-          sx={{
-            bgcolor: '#ff2625',
-            color: '#fff',
-            textTransform: 'none',
-            width: { lg: '175px', xs: '80px' },
-            fontSize: { lg: '20px', xs: '14px' },
-            height: '56px',
-            position: 'absolute',
-            right: 0
-          }}
+          m='auto'
         >
-          Search
-        </Button>
+          <TextField
+            sx={{
+              input: {
+                fontWeight: 700,
+                border: 'none',
+                borderRadius: '4px'
+              },
+              width: { lg: '800px', xs: '350px' },
+              background: '#fff',
+              borderRadius: '40px'
+            }}
+            height='76px'
+            value={search}
+            onChange={(e) => { setSearch(e.target.value.toLowerCase()) }}
+            placeholder='Search Exercises'
+            type='text'
+          />
+          <Button
+            onClick={handleSearch}
+            className='search-btn'
+            sx={{
+              bgcolor: '#ff2625',
+              color: '#fff',
+              textTransform: 'none',
+              width: { lg: '175px', xs: '80px' },
+              fontSize: { lg: '20px', xs: '14px' },
+              height: '56px',
+              position: 'absolute',
+              right: 0
+            }}
+          >
+            Search
+          </Button>
+        </Box>
         {
           loading ? <Box> Loading...</Box> :
             error.isError ? <Box> {error.message}</Box> :
               <Exercises exercises={exercises} />
         }
-
       </Box>
     </Stack>
   )

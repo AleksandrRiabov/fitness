@@ -5,17 +5,20 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export default function ExerciseCard({exercise}) {
-const {name, difficulty, equipment, instructions, muscle, type} = exercise;
+export default function ExerciseCard({ exercise }) {
+  const { name, difficulty, equipment, instructions, muscle, type } = exercise;
 
   return (
-    <Card sx={{ maxWidth: 345, width: '20%' }}>
+    <Card sx={{
+      maxWidth: 345, width: '22%',
+      margin: "1rem"
+    }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {instructions}
+          {instructions.substring(0, 200)}
         </Typography>
       </CardContent>
       <CardActions>

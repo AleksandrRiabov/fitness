@@ -13,12 +13,13 @@ const Exercises = ({ exercises }) => {
 
   return (
     <Box
-    sx={{
-      display: 'flex',
-      justifyContent: 'space-between',
-      width: '100%',
-      flexWrap: 'wrap'
-    }}
+      sx={{
+        margin: 'auto',
+        display: 'flex',
+        width: { lg: '90%', xs: '98%' },
+        flexWrap: 'wrap',
+        marginTop: '50px'
+      }}
     >{exercisesBlock}
     </Box>
   )
