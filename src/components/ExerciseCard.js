@@ -1,9 +1,11 @@
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+
+import { capitalize } from '../utils/helpers.js';
+import { Link } from 'react-router-dom';
 
 export default function ExerciseCard({ exercise }) {
   const { name, difficulty, equipment, instructions, muscle, type } = exercise;
@@ -22,16 +24,16 @@ export default function ExerciseCard({ exercise }) {
           {name}
         </Typography>
         <Typography variant="body2" mb='5px'>
-          <strong> Dificulty </strong>: {difficulty}
+          <strong> Dificulty </strong>: {capitalize(difficulty)}
         </Typography>
         <Typography variant="body2" mb='5px'>
-          <strong> Muscle </strong>: {muscle}
+          <strong> Muscle </strong>: {capitalize(muscle)}
         </Typography>
         <Typography variant="body2" mb='5px'>
-          <strong> Equipment </strong>: {equipment}
+          <strong> Equipment </strong>: {capitalize(equipment)}
         </Typography>
         <Typography variant="body2" mb='5px'>
-          <strong> Type </strong>: {type}
+          <strong> Type </strong>: {capitalize(type)}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           <strong> Description: </strong>
@@ -39,7 +41,9 @@ export default function ExerciseCard({ exercise }) {
         </Typography>
       </CardContent>
       <CardActions sx={{ alignSelf: 'auto' }}>
-        <Button size="small">Learn More</Button>
+        <Link to={`exercise/:${name}`} state={ exercise }>
+          <Button size="small">Learn More</Button>
+        </Link>
       </CardActions>
     </Card>
   );

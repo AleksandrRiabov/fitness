@@ -81,11 +81,7 @@ const SearchExercises = () => {
             Search
           </Button>
         </Box>
-        {
-          loading ? <Box> Loading...</Box> :
-            error.isError ? <Box> {error.message}</Box> :
-              <Exercises exercises={exercises} />
-        }
+            <Exercises loading={loading} error={error.isError} exercises={exercises} />
       </Box>
     </Stack>
   )
